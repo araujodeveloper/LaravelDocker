@@ -1,0 +1,71 @@
+version: '3'
+
+services:
+    app:
+        container_name: app-laravel
+        build: .
+        depends_on:
+            - postgres
+        restart: always
+        tty: true
+        working_dir: /var/www
+        env_file:
+            - .env
+        volumes:
+            - ./:/var/www
+        networks:
+            - app-network
+
+    postgres:
+        image: postgres:16
+        container_name: app-postgres
+        restart: always
+        # ports:
+        #   - '127.0.0.1:5433:5433'
+        # volumes:
+        #   - /data/postgres:/var/lib/postgresql/data
+        volumes:
+            - ./docker/postgres:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_DB=laravel_production
+            - POSTGRES_USER=postgres
+            # Please provide your own password.
+            - POSTGRES_PASSWORD=rellerakimek
+        networks:
+            - app-network
+
+    pgadmin:
+        image: dpage/pgadmin4:latest
+        container_name: app-pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+            PGADMIN_DEFAULT_PASSWORD: "PgAdmin1!"
+        depends_on:
+            - postgres
+            - nginx
+        networks:
+            - app-network
+
+    nginx:
+        build:
+            context: ./docker/nginx
+            dockerfile: Dockerfile
+        restart: always
+        container_name: nginx
+        networks:
+            - app-network
+        depends_on:
+            - app
+            - postgres
+        volumes:
+            - ./:/var/www
+        ports:
+            - 8000:80
+
+
+
+
+networks:
+    app-network:
+        name: app-network
+        driver: bridge
