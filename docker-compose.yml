@@ -50,19 +50,19 @@ services:
         build:
             context: ./docker/nginx
             dockerfile: Dockerfile
-        restart: always
         container_name: nginx
+        restart: always
+        entrypoint: nginx -g "daemon off;"
+        volumes:
+            - ./:/var/www
+        ports:
+            - "8001:80" #laravel
+            - "8082:8082" #pgAdmin
         networks:
             - app-network
         depends_on:
             - app
             - postgres
-        volumes:
-            - ./:/var/www
-        ports:
-            - 8000:80
-
-
 
 
 networks:

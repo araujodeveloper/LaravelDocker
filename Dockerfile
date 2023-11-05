@@ -18,15 +18,24 @@ RUN apt-get update \
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
   && docker-php-ext-install pdo pdo_pgsql pgsql zip bcmath gd
 
+WORKDIR /var/www
+
 RUN rm -rf /var/www/html
 RUN ln -s public html
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN chmod -R 755 /var/www/storage
+COPY . /var/www
+
+RUN chmod -R 777 /var/www/storage
+
+RUN chown -R www-data:www-data /var/www
+
+RUN usermod -u 1000 www-data
+USER www-data
 
 RUN npm install
 
-WORKDIR /var/www
 
 EXPOSE 9000
+ENTRYPOINT [ "php-fpm" ]
