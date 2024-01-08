@@ -1,3 +1,91 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.card {
+    @apply block p-6 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700;
+}
+
+.card-white {
+    @apply block p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700;
+}
+
+.card-hover {
+    @apply block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700;
+}
+
+.invalid-feedback {
+    @apply mt-2 text-sm text-red-600 dark:text-red-500;
+}
+
+.input-file {
+    @apply block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400;
+}
+
+.input-file-with-error {
+    @apply block w-full text-sm text-red-900 border border-red-500 rounded-lg cursor-pointer bg-red-50 dark:text-red-400 focus:outline-none dark:bg-red-400 dark:border-red-100 dark:placeholder-red-400;
+}
+
+
+.input-with-error {
+    @apply bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400;
+}
+
+.label-input {
+    @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
+}
+
+.input-bg-gray-50 {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+}
+
+.pill-badge-default {
+    @apply bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300;
+}
+
+.pill-badge-dark {
+    @apply bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300;
+}
+
+.pill-badge-red {
+    @apply bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300;
+}
+
+.pill-badge-green {
+    @apply bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300;
+}
+
+.pill-badge-yellow {
+    @apply bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300;
+
+}
+
+.pill-badge-indigo {
+    @apply bg-indigo-100 text-indigo-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300;
+}
+
+.pill-badge-purple {
+    @apply bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300;
+}
+
+.pill-badge-pink {
+    @apply bg-pink-100 text-pink-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300;
+}
+
+
+.row-bg-white {
+    @apply bg-white border-b dark:bg-gray-900 dark:border-gray-700;
+}
+
+
+.row-gray-50 {
+    @apply border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700;
+}
+
+.tox-notifications-container{
+    @apply hidden;
+}
+
+.tox-promotion{
+    @apply hidden;
+}
